@@ -31,7 +31,7 @@ from saxad.anomalyDetectionThreshold import hmu_anomaly_score_gaussian_tail_prob
 - [ ] Documentation
 - [ ] Error Handling
 - [ ] Full Support for tensors and pandas.DataFrame
-- [ ] Create SATAD
+- [x] Create SATAD
 - [ ] Evaluate Code on more Datasets
 - [ ] Make pretrained models available
 
