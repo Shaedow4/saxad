@@ -13,7 +13,7 @@ The package depends on *keras* with *tensorflow* backend. Other backends should 
 To install the package with pip, download the repository, open a command line interface in the main diretory of this project and write
 
 ```bash
-python -m pip install -e ./saxad
+python -m pip install -e ./
 ```
 
 ### import
