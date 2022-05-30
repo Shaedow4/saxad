@@ -26,7 +26,7 @@ def add_trained_ae_stack(model, ae_config, window_size):
     if len(model.layers) == 0:
         model.add(
             keras.layers.LSTM(
-                ae_config.get("hidden_units"), input_shape=ae_config.get("input_shape")
+                ae_config.get("hidden_units"), input_shape=ae_config.get("input_shape"), return_sequences=ae_config.get("return_sequences")
             )
         )
         model.layers[-1].set_weights(ae_config.get("weights_bias"))
@@ -47,7 +47,7 @@ def add_trained_ae_stack(model, ae_config, window_size):
     ):
         raise ShapeError("LSTM Layer cant work with Dimensions different than 3")
     if (ae_config.get("return_sequences")) and (
-        not ae_config.get("multiply_last_layer_output")
+        ae_config.get("multiply_last_layer_output")
     ):
         raise ShapeError(
             "Dimensions off output and input are propably not going to fit"
@@ -75,7 +75,7 @@ def create_encoder_decoder_model(
         )
     else:
         for ae_config in ae_configs:
-            model = add_trained_ae_stack(model, ae_config)
+            model = add_trained_ae_stack(model, ae_config, window_size)
         model.add(
             keras.layers.LSTM(
                 hidden_input_units,
@@ -90,7 +90,7 @@ def create_encoder_decoder_model(
     # decoder
     if (not return_sequences) and (not multiply_last_layer_output):
         raise ShapeError("LSTM Layer cant work with Dimensions different than 3")
-    if (return_sequences) and (not multiply_last_layer_output):
+    if (return_sequences) and (multiply_last_layer_output):
         raise ShapeError(
             "Dimensions off output and input are propably not going to fit"
         )
