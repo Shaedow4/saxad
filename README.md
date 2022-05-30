@@ -27,12 +27,10 @@ from saxad.anomalyDetectionThreshold import hmu_anomaly_score_gaussian_tail_prob
 ```
 
 ## To-Do
-- [ ] Generalize Code, f.e training is only done with *mse*
+- [x] Generalize Code, f.e training is only done with *mse*
 - [ ] Documentation
 - [ ] Error Handling
-- [ ] Full Support for tensors and pandas.DataFrame
 - [x] Create SATAD
-- [ ] Evaluate Code on more Datasets
-- [ ] Make pretrained models available
+- [ ] Evaluate Architecture on more Datasets
 
 Published with *MIT License*
