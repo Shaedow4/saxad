@@ -12,6 +12,7 @@ class AttentionAutoencoder(keras.layers.Layer):
             num_heads=num_heads,
             key_dim=key_dim,
             output_shape=attention_encoder_output_shape,
+            dropout=0.2
         )
         self.normalization = keras.layers.LayerNormalization(epsilon=1e-6)
         self.multiply_last_layer = multiply_last_layer
@@ -20,6 +21,10 @@ class AttentionAutoencoder(keras.layers.Layer):
             self.copy_last_only_vector = keras.layers.Lambda(
             lambda x: pre.dynamic_modify_tensor_shape(x, window_size)
         )
+    
+    def get_config(self):
+        cfg = super().get_config()
+        return cfg  
 
     def call(self, input):
         x = self.att_encoder(input, input)

@@ -16,7 +16,6 @@ def positional_encoding(x):
         np.arange(dimension, dtype=np.float64)[np.newaxis, :],
         dimension,
     )
-    print(frequencies_pos)
     frequencies_pos[:, 0::2] = np.sin(frequencies_pos[:, 0::2])
     frequencies_pos[:, 1::2] = np.cos(frequencies_pos[:, 1::2])
     pos_encoding = frequencies_pos[np.newaxis, ...]
