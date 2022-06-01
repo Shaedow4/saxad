@@ -88,6 +88,8 @@ def create_encoder_decoder_model(
         if layer.name not in weights_dict.keys():
             continue
         model.get_layer(layer.name).set_weights(weights_dict[layer.name])
+        model.get_layer(layer.name).trainable = False
+
     return model, {
         "num_heads": attention_heads,
         "attention_encoder_output_shape": attention_encoder_output_shape,
